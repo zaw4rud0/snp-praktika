@@ -13,12 +13,12 @@
 #define ERROR_IN_MONTH 1
 #define ERROR_IN_YEAR 2
 
-typedef enum {
+enum month_t {
     JAN = 1, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-} Monat;
+};
 
 /* Funktionsdeklarationen */
-int gibIntWert(char const *string, int day, int month);
+int gibIntWert(char const *string, int min, int max);
 
 int istSchaltjahr(int year);
 
@@ -44,13 +44,26 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-int gibIntWert(char const *string, int day, int month) {
+int gibIntWert(char const *str, int min, int max) {
+    int value;
+    char input[30];
 
-    return -1;
+    printf("Bitte geben Sie ein %s ein, welches im Bereich %d-%d liegt: ", str, min, max);
+    fgets(input, sizeof(input), stdin);
+    value = atoi(input);
+
+    while (value < min || value > max) {
+        printf("Fehler: %s liegt ausserhalb des Bereichs %d-%d\n", str, min, max);
+        printf("Bitte geben Sie ein %s ein, welches im Bereich %d-%d liegt: ", str, min, max);
+        fgets(input, sizeof(input), stdin);
+        value = atoi(input);
+    }
+
+    return value;
 }
 
 int istSchaltjahr(int year) {
-    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 1 : 0;
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 }
 
 int tageProMonat(int year, int month) {
@@ -71,6 +84,6 @@ int tageProMonat(int year, int month) {
         case FEB:
             return istSchaltjahr(year) ? 29 : 28;
         default:
-            return 0;
+            return ERROR_IN_MONTH;
     }
 }
