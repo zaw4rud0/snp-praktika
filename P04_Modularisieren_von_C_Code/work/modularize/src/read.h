@@ -12,5 +12,15 @@
  * @brief Lab implementation
  */
 // begin students to add code for task 4.1
+#ifndef READ_H
+#define READ_H
 
+#include <stdio.h> // Für EOF
+
+#define PARSE_ERROR -1
+#define READ_ERROR  -2
+
+int getInt(int maxResult);
+
+#endif
 // end students to add code
