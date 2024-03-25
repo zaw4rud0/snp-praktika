@@ -6,10 +6,10 @@ ___
 
 ## 1. Übersicht 
 
-In diesem Praktikum üben Sie modulare Programmierung indem Sie ein
+In diesem Praktikum üben Sie modulare Programmierung, indem Sie ein
 Java Programm (bestehend aus drei Java Files) in ein entsprechendes C
-Programm aus drei Modulen (aus je einem Header- und Implementations-
-File) übersetzen. Sie passen das Makefile so an, dass die
+Programm aus drei Modulen (aus je einem Header- und Implementations-File)
+übersetzen. Sie passen das Makefile so an, dass die
 entsprechenden Module mit kompiliert werden.
 
 In der zweiten Aufgabe erstellen Sie Makefile Regeln für die drei
@@ -38,7 +38,7 @@ In diesem Praktikum lernen Sie die Handgriffe um ein Programm zu modularisieren,
   
 Die Bewertung dieses Praktikums ist am Ende angegeben.
 
-Erweitern Sie die vorgegebenen Code Gerüste, welche im `git`
+Erweitern Sie die vorgegebenen Codegerüste, welche im `git`
 Repository `snp-lab-code` verfügbar sind.
 
 
@@ -46,8 +46,8 @@ Repository `snp-lab-code` verfügbar sind.
 Das zu ergänzende Programm dep2dot hat folgende Funktionalität:
 
 Ergänzen Sie in **`modularize/src`** den Code in **`triangle.c`**,
-**`read.h`**, **`read.c`**, **`rectang.h`** und **`rectang.c`** so
-dass die Tests erfolgreich durchlaufen. Die C Implementation soll
+**`read.h`**, **`read.c`**, **`rectang.h`** und **`rectang.c`**,
+sodass die Tests erfolgreich durchlaufen. Die C Implementation soll
 dieselbe Funktionalität haben wie die gegebenen Java Files. Lehnen Sie
 sich so nahe wie möglich an die Java Files an.
 
@@ -67,7 +67,7 @@ Die drei Java Files liegen in **`modularize/java`**.
 * Jene **`#define`** welche von andern Modulen verwendet werden
   kommen ins Header-File, die andern ins Implementations-File.
 * Ein Grossteil des Java Codes aus den Methoden Bodies kann
-  eins-zu-eins in C übernommen werden.  Listen Sie auf welche
+  1:1 in C übernommen werden. Listen Sie auf welche
   Unterschiede es gibt:
 
 <table>
@@ -223,8 +223,8 @@ Das Programm `dep2dot` hat folgende Funktionalität:
 
 
 1. Es liest von `stdin` die vom Compiler generierten
-   Abhängigkeits-Daten in Form des `dep` Formates ein.
-2. Das erste und einzige Command Line Argument gibt das File an für
+   Abhängigkeitsdaten in Form des `dep` Formates ein.
+2. Das erste und einzige Command Line Argument gibt das File an, für
    welches die von `stdin` gelesenen Abhängigkeiten gelten.
 3. Auf `stdout` werden die Abhängigkeiten von `stdin` übersetzt als
    `dot`-File Format ausgegeben.
@@ -237,9 +237,9 @@ Das Programm `dot` hat folgende Funktionalität:
 
 Das `dep`-Format und das `dot`-Format sind im Anhang beschrieben.
 
-Sie können die Funktionalität des Programms `dep2dot` kennen lernen,
+Sie können die Funktionalität des Programms `dep2dot` kennenlernen,
 indem Sie folgende Zeilen auf der Bash Shell ausführen. Das
-`dep.input` File ist Teil der automatisierten Test Suite im
+`dep.input` File ist Teil der automatisierten Test-Suite im
 Verzeichnis `tests`:
 
 
@@ -280,11 +280,11 @@ Ergänzungen durch
   einem File mit Namen `dep` suchen um zu entscheiden ob es
   inkrementell gebildet werden muss)
 * schreiben Sie das Target `dep` gemäss der Beschreibung im Makefile
-* schreiben Sie die Suffix Regel für die Übersetzung von `.png <-
+* schreiben Sie die Suffix-Regel für die Übersetzung von `.png <-
   .dot` gemäss Vorgabe im `Makefile` (als Inspiration, siehe auch die
   `%.c.dep: %.c` Suffix Regel weiter unten im `Makefile`) – erklären
   Sie was die Regel macht
-* schreiben Sie die Suffix Regel für die Übersetzung von` .dot <-
+* schreiben Sie die Suffix-Regel für die Übersetzung von` .dot <-
   .dep` gemäss Vorgabe im `Makefile` – erklären Sie was die Regel
   macht
 
@@ -306,19 +306,18 @@ ___
 
 Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmcode müssen der Praktikumsbetreuung gezeigt werden. Die Lösungen müssen mündlich erklärt werden.
 
-| Aufgabe | Kriterium | Punkte |
-| :-- | :-- | :-- |
-| 1 | Sie können das funktionierende Programm inklusive funktionierende Tests demonstrieren und erklären. |  |
-| 1 | Module einbinden, Header Files schreiben | 2 |
-| 2 | Sie können das funktionierende Makefile demonstrieren und erklären. |  |
-| 2 | Neue Regeln hinzufügen | 2 |
-
+| Aufgabe | Kriterium                                                                                           | Punkte |
+|:--------|:----------------------------------------------------------------------------------------------------|:-------|
+| 1       | Sie können das funktionierende Programm inklusive funktionierende Tests demonstrieren und erklären. |        |
+| 1       | Module einbinden, Header Files schreiben                                                            | 2      |
+| 2       | Sie können das funktionierende Makefile demonstrieren und erklären.                                 |        |
+| 2       | Neue Regeln hinzufügen                                                                              | 2      |
 
 ___
 
 ## 6. Anhang 
 
-### 6.1	Verwendete zusätzliche Sprach Elemente
+### 6.1	Verwendete zusätzliche Sprachelemente
 
 
 **Sprach Element**
@@ -345,8 +344,8 @@ tatsächlich verwendeten Header Files auflistet. Zusätzlich wird im
 Resultat die Verschachtelungstiefe der Includes angegeben.
 
 Im zweiten Schritt übersetzt das Programm (`dep2dot`) dieses
-Praktikums solche Dependency Files (`dep`) in eine Text Repräsentation
-der Abhängigkeiten (`dot`) welche in graphische Darstel-lung (`png`)
+Praktikums solche Dependency Files (`dep`) in eine Text-Repräsentation
+der Abhängigkeiten (`dot`) welche in graphische Darstellung (`png`)
 übersetzt werden kann.
 
 Als Tool zur Übersetzung der `dot` Files in das `png` Format dient das
@@ -354,7 +353,7 @@ Als Tool zur Übersetzung der `dot` Files in das `png` Format dient das
 
 ```sudo apt install graphviz```
 
-Die `png` Files können dann z.B. in der Programm Dokumentation
+Die `png` Files können dann z.B. in der Programm-Dokumentation
 integriert werden (Darstellung zu Test Zwecken z.B. mittels `firefox
 file.png`).
 
@@ -468,7 +467,6 @@ digraph G {
 
 Das `png` Format ist ein verlustfrei komprimiertes Raster Graphik
 Format. Es wird oft in Web Pages verwendet.
-
 
 ___
 Version: 22.02.2022

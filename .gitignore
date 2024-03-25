@@ -53,3 +53,35 @@ dkms.conf
 
 /.idea/
 */.idea/
+
+# Compiled Object files
+**/.DS_Store
+*.slo
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+
+**/cmake-build-debug
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/install_manifest.txt
+**/CMakeFiles/
+**/CTestTestfile.cmake
+**/Makefile
+**/*.cbp
+**/CMakeScripts
+**/compile_commands.json
+**/CmakeLists.txt
+
+include/divisible/*
+
+build/**/*
+
+include/*
+lib/*
+bin/*
+test/test_runner
