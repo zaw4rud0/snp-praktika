@@ -154,22 +154,40 @@ printf(...)
 System.out.println(…)
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+printf(...);
+printf("\n");
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 System.in.read()
 ```
 
+</td><td>
 
-</td><td></td></tr>
+```C
+scanf(...)
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 byte[] buffer = new byte[BUFFERSIZE];
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+char buffer[BUFFERSIZE];
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -179,7 +197,18 @@ public class rectang {
 }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+typedef struct {
+    ...
+} rectang;
+
+bool Rectangular(...)
+{ ... }
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -190,7 +219,18 @@ public class read {
 }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+typedef struct {
+    ...
+} read;
+
+int getInt(...)
+{ ... }
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -201,7 +241,14 @@ class triangle {
 }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+int main(int argc, char *argv[])
+{ ... }
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -210,7 +257,15 @@ read ReadInt = new read();
 word = ReadInt.getInt(MAX_NUMBER);
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+read ReadInt;
+...
+word = getInt(&ReadInt, MAX_NUMBER);
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -219,7 +274,15 @@ rectang Rect = new rectang();
 if (Rect.Rectangular(a, b, c) == true) { ... }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+rectang Rect;
+...
+if (Rectangular(&Rect, a, b, c) == true) { ... }
+```
+
+</td></tr>
 <tr><td>
 
 ```
@@ -228,7 +291,13 @@ System.out.println(
 + " ist rechtwinklig");
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
+```
+
+</td></tr>
 </table>
 
 ## 4. Aufgabe 2: Makefile Regeln
