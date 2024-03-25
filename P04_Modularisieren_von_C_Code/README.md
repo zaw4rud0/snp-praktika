@@ -90,35 +90,64 @@ table th:nth-of-type(2) {
 byte
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+char
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 boolean
 ```
 
-</td><td></td></tr>
+</td><td>
+
+0 for false <p>
+Any non-zero integer for false
+
+</td></tr>
 <tr><td>
 
 
 ```Java
 true
 ```
-</td><td></td></tr>
+</td><td>
+
+```C
+// In C gibt es kein true
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 false
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+// In C gibt es kein false
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 System.out.print(…)
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```c
+printf(...)
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
