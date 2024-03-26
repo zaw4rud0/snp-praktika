@@ -83,5 +83,13 @@ build/**/*
 
 include/*
 lib/*
+testlib/*
 bin/*
 test/test_runner
+
+**/runtest
+**/dep2dot
+**/stdout.txt
+**/stderr.txt
+**/CMakeLists.txt
+**/bin/*

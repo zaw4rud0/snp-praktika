@@ -13,12 +13,14 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "read.h"
 #include "rectang.h"
 
 /// max side length
 #define MAX_NUMBER 1000
 
+int parse_triangle_edge(char *message);
 
 /**
  * @brief Main entry point.
@@ -26,42 +28,40 @@
  */
 int main(void)
 {
-	// begin students to add code for task 4.1
-    int a, b, c;
-    int result;
+    // begin students to add code for task 4.1
+    while(1) {
+        printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n\n");
 
-    while (1) {
-        printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n");
+        int a;
+        int b;
+        int c;
+        char str[10];
 
-        printf("Seite a: ");
-        a = getInt(MAX_NUMBER);
-        if (a < 0) {
-            printf("Fehlerhafte Eingabe.\n");
-            continue;
-        }
+        a = parse_triangle_edge("Seite a: ");
+        if (a == READ_ERROR ) break;
+        b = parse_triangle_edge("Seite b: ");
+        if (b == READ_ERROR ) break;
+        c = parse_triangle_edge("Seite c: ");
+        if (c == READ_ERROR ) break;
 
-        printf("Seite b: ");
-        b = getInt(MAX_NUMBER);
-        if (b < 0) {
-            printf("Fehlerhafte Eingabe.\n");
-            continue;
-        }
+        if (isRectangular(a, b, c) == true) strcpy(str,"");
+        else strcpy(str,"nicht ");
 
-        printf("Seite c: ");
-        c = getInt(MAX_NUMBER);
-        if (c < 0) {
-            printf("Fehlerhafte Eingabe.\n");
-            continue;
-        }
+        printf("-> Dreieck %d-%d-%d ist %srechtwinklig\n", a, b, c, str);
 
-        result = isRectangular(a, b, c);
-
-        if (result) {
-            printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
-        } else {
-            printf("-> Dreieck %d-%d-%d ist nicht rechtwinklig\n", a, b, c);
-        }
+        printf("\n\n");
     }
-	// end students to add code
+    printf("\n\nbye bye\n\n");
     return EXIT_SUCCESS;
+}
+
+int parse_triangle_edge(char *message) {
+    int edge;
+
+    do {
+        printf("%s", message);
+        edge = getInt(MAX_NUMBER);
+    } while (edge < 0 && edge != READ_ERROR);
+
+    return edge;
 }
