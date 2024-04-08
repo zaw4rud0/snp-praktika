@@ -55,17 +55,18 @@ ___
 
 ### 4.1 Teilaufgabe test_model_init 
 Das Programm besteht aus folgenden Files:
-| Datei | ToDo |
-| :-- | :-- |
-|Makefile | -> gegeben, d.h. nichts anzupassen |
-|tests/tests.c| -> gegeben, d.h. nichts anzupassen |
-|src/main.c| -> gegeben, d.h. nichts anzupassen |
-|src/view.h| -> gegeben, d.h. nichts anzupassen |
-|src/view.c| -> gegeben, d.h. nichts anzupassen |
-|src/control.h| -> gegeben, d.h. nichts anzupassen |
-|src/control.c| -> gegeben, d.h. nichts anzupassen |
-|src/model.h| -> gegeben, d.h. nichts anzupassen |
-|src/model.c| -> **anzupassen:** umsetzen gemäss den Angaben unten |
+
+| Datei         | ToDo                                                 |
+|:--------------|:-----------------------------------------------------|
+| Makefile      | -> gegeben, d.h. nichts anzupassen                   |
+| tests/tests.c | -> gegeben, d.h. nichts anzupassen                   |
+| src/main.c    | -> gegeben, d.h. nichts anzupassen                   |
+| src/view.h    | -> gegeben, d.h. nichts anzupassen                   |
+| src/view.c    | -> gegeben, d.h. nichts anzupassen                   |
+| src/control.h | -> gegeben, d.h. nichts anzupassen                   |
+| src/control.c | -> gegeben, d.h. nichts anzupassen                   |
+| src/model.h   | -> gegeben, d.h. nichts anzupassen                   |
+| src/model.c   | -> **anzupassen:** umsetzen gemäss den Angaben unten |
 
 1.	Führen Sie `make test` aus
 ```bash
