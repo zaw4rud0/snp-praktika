@@ -9,7 +9,7 @@ ___
 ___
 
 ## 2. Lernziele 
-In diesem Praktikum schreiben Sie selbst von Grund auf ein C-Programme, das mit Strings operiert. Ferner ergänzen Sie ein bestehendes und lernen dabei den Zugriff auf Arrays.
+In diesem Praktikum schreiben Sie selbst von Grund auf ein C-Programm, das mit Strings operiert. Ferner ergänzen Sie ein bestehendes und lernen dabei den Zugriff auf Arrays.
 
   * Sie können mit Arrays von Strings umgehen.
   * Sie können String-Funktionen aus der Standard Library verwenden. 
@@ -31,17 +31,16 @@ ___
 ## 4. Aufgabe 2: TicTacToe 
 Das zu ergänzende Programm tic-tac-toe hat folgende Funktionalität:
 1.	es stellt ein 3x3 TicTacToe Spielbrett auf dem Terminal dar
-2.	es liest von stdin eine Ziffer 0…9 ein, wobei 0 für Programm-Terminieren, die übrigen Ziffern für die Wahl eines Feldes stehen
+2.	es liest von stdin eine Ziffer 0 ...9 ein, wobei 0 für Programm-Terminieren, die übrigen Ziffern für die Wahl eines Feldes stehen
 3.	der erste Spielzug wird von Spieler A geführt, danach wechselt das Programm zwischen den Spielern A und B
 4.	bei Gewinn oder bei vollem Brett ist das Spiel vorbei
 
-Erweitern Sie die vorgegebenen Code Gerüste, welche im git Repository snp-lab-code verfügbar sind.
+Erweitern Sie die vorgegebenen Codegerüste, welche im git Repository snp-lab-code verfügbar sind.
 
 Wenn die Aufgabe erfolgreich umgesetzt ist, können Sie das Spiel ausführen:
 ```bash
 bin/tic-tac-toe
 ```
-
 
 ![](./TicTacToe.png)
 
@@ -91,7 +90,7 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
              asserts      6      6      0      6      n/a
 
 ```
-2. 	Konzentrieren Sie sich auf den ersten Test der fehlschlägt. Dies ist ein Unit Test, welcher die Funktion **model_init()** prüft. Suchen Sie die Funktion in **src/model.h** und **src/model.c**.
+2. Konzentrieren Sie sich auf den ersten Test der fehlschlägt. Dies ist ein Unit-Test, welcher die Funktion **model_init()** prüft. Suchen Sie die Funktion in **src/model.h** und **src/model.c**.
 3. Was ist die geforderte Funktionalität und wie ist sie implementiert?
 
 Suchen Sie die darin aufgerufene **model_init()** Funktion und implementieren Sie diese.
@@ -194,13 +193,13 @@ ___
 
 Der funktionierende Programmcode muss der Praktikumsbetreuung gezeigt werden. Die Lösungen müssen mündlich erklärt werden.
 
-| Aufgabe | Kriterium | Punkte |
-| :-- | :-- | :-- |
-| Sortieren von Strings | Sie können das funktionierende Programm demonstrieren und erklären. | 2 |
-| TicTacToe | Sie können das funktionierende Programm inklusive funktionierende Tests demonstrieren und erklären. |  |
-| TicTacToe | Teilaufgabe test_model_init | 0.5 |
-| TicTacToe | Teilaufgabe test_model_get_state und test_model_get_winner | 0.5 |
-| TicTacToe | Teilaufgabe test_model_can_move | 0.5 |
-| TicTacToe | Teilaufgabe test_model_move und test_model_get_win_line | 0.5 |
+| Aufgabe               | Kriterium                                                                                           | Punkte |
+|:----------------------|:----------------------------------------------------------------------------------------------------|:-------|
+| Sortieren von Strings | Sie können das funktionierende Programm demonstrieren und erklären.                                 | 2      |
+| TicTacToe             | Sie können das funktionierende Programm inklusive funktionierende Tests demonstrieren und erklären. |        |
+| TicTacToe             | Teilaufgabe test_model_init                                                                         | 0.5    |
+| TicTacToe             | Teilaufgabe test_model_get_state und test_model_get_winner                                          | 0.5    |
+| TicTacToe             | Teilaufgabe test_model_can_move                                                                     | 0.5    |
+| TicTacToe             | Teilaufgabe test_model_move und test_model_get_win_line                                             | 0.5    |
 ___
 Version: 14.02.2022

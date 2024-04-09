@@ -8,8 +8,8 @@ Repository für die Praktika aus dem Kurs Systemnahe Programmierung im FS24
 |:-------:|---------------------------------|:----------------------------------------:|
 |   01    | Erste Schritte mit C            |     [Link](P01_Erste_Schritte_mit_C)     |
 |   02    | Funktionen, Datentyp "enum"     |   [Link](P02_Funktionen_Datentyp_enum)   |
-|   03    | Bit Operation struct typedef    | [Link](P03_Bit_Operation_struct_typedef) |
-|   04    | Modularisieren von C Code       |  [Link](P04_Modularisieren_von_C_Code)   |
+|   03    | Modularisieren von C Code       |  [Link](P04_Modularisieren_von_C_Code)   |
+|   04    | Bit Operation struct typedef    | [Link](P03_Bit_Operation_struct_typedef) |
 |   05    | TicTacToe                       |          [Link](P05_TicTacToe)           |
 | 06 / 07 | Personen Verwaltung Linked List |                   Link                   |
 | 08 / 09 | Prozesse und Threads            |                   Link                   |
