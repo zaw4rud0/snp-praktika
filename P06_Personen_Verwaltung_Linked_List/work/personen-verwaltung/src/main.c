@@ -27,7 +27,6 @@ int input_person(person_t *person) {
 
     printf("Enter name: ");
     scanf("%1023s", name_buffer);
-    while (getchar() != '\n');
     if (strlen(name_buffer) >= NAME_LEN) {
         printf("Name too long, It should be less than %d characters.\n", NAME_LEN);
         return -1;
@@ -36,7 +35,6 @@ int input_person(person_t *person) {
 
     printf("Enter first name: ");
     scanf("%1023s", first_name_buffer);
-    while (getchar() != '\n');
     if (strlen(first_name_buffer) >= NAME_LEN) {
         printf("First name too long. It should be less than %d characters.\n", NAME_LEN);
         return -1;
@@ -44,12 +42,14 @@ int input_person(person_t *person) {
     strcpy(person->first_name, first_name_buffer);
 
     printf("Enter age: ");
-    while (getchar() != '\n');
     if (scanf("%u", &age) != 1) {
         printf("Invalid input for age. Please enter a valid number.\n");
+        while (getchar() != '\n');
         return -1;
     }
     person->age = age;
+
+    while (getchar() != '\n');
 
     return 0;
 }
