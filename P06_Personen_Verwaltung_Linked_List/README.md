@@ -22,13 +22,11 @@ ___
 
 In diesem Praktikum wenden Sie viele der bisher gelernten C Elemente an.
 * Sie können anhand dieser Beschreibung ein vollständiges C Programm schreiben.
-* Sie können Unit Tests schreiben welche die wesentlichen Funktionen des Programms individuell testen.
-* 
+* Sie können Unit-Tests schreiben welche die wesentlichen Funktionen des Programms individuell testen.
+
 Die Bewertung dieses Praktikums ist am Ende angegeben.
 
-Erweitern Sie die vorgegebenen Code Gerüste, welche im `git` Repository `snp-lab-code` verfügbar sind.
-
-
+Erweitern Sie die vorgegebenen Codegerüste, welche im `git` Repository `snp-lab-code` verfügbar sind.
 ___
 
 ## 3. Personenverwaltung 
@@ -40,11 +38,10 @@ Das Programm soll in einer Schleife dem Benutzer jeweils folgende Auswahl bieten
 
 **I**(nsert), **R**(emove), **S**(how), **C**(lear), **E**(nd):
 * **Insert**: der Benutzer wird aufgefordert, eine Person einzugeben
-* **Remove**: der Benutzer wird aufgefordert, die Daten einer zu löschenden Person einzu-geben
-* **Show**: eine komplette Liste aller gespeicherten Personen wird in alphabetischer Rei-henfolge ausgegeben
+* **Remove**: der Benutzer wird aufgefordert, die Daten einer zu löschenden Person einzugeben
+* **Show**: eine komplette Liste aller gespeicherten Personen wird in alphabetischer Reihenfolge ausgegeben
 * **Clear**: alle Personen werden gelöscht
 * **End**: das Programm wird beendet
-
 ___
 
 ### 3.2	Designvorgaben 
