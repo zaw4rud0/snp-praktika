@@ -13,10 +13,10 @@ typedef struct node {
 node_t *list_init();
 
 // Inserts a new person into the list in sorted order.
-void list_insert(node_t **head, person_t person);
+void list_insert(node_t *head, person_t person);
 
 // Removes a person from the list.
-void list_remove(node_t **head, person_t person);
+void list_remove(node_t *head, person_t person);
 
 // Checks if the list contains a given person already.
 // Returns 1 if it's a duplicate, 0 otherwise.

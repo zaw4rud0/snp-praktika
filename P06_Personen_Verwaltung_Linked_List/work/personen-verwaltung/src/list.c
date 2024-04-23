@@ -5,17 +5,17 @@
 node_t *list_init() {
     node_t *head = (node_t *) malloc(sizeof(node_t));
     if (head == NULL) {
-        perror("Failed to initialize list");
+        printf("Failed to initialize list");
         return NULL;
     }
     head->next = head; // Cyclic list
     return head;
 }
 
-void list_insert(node_t **head, person_t person) {
+void list_insert(node_t *head, person_t person) {
     node_t *new_node = (node_t *) malloc(sizeof(node_t));
     if (new_node == NULL) {
-        perror("Failed to insert in list");
+        printf("Failed to insert in list");
         return;
     }
     new_node->content = person;
@@ -28,7 +28,7 @@ void list_insert(node_t **head, person_t person) {
     current->next = new_node;
 }
 
-void list_remove(node_t **head, person_t person) {
+void list_remove(node_t *head, person_t person) {
     node_t *current = *head;
     node_t *prev = NULL;
     do {

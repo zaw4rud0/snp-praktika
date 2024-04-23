@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
             case 'I':
                 if (input_person(&temp_person) == 0) {
                     if (!list_contains(list, temp_person)) {
-                        list_insert(&list, temp_person);
+                        list_insert(list, temp_person);
                         printf("Person successfully inserted.\n");
                     } else {
                         printf("Person already exists in the list. Operation canceled.\n");
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
             case 'R':
                 if (input_person(&temp_person) == 0) {
                     if (list_contains(list, temp_person)) {
-                        list_remove(&list, temp_person);
+                        list_remove(list, temp_person);
                         printf("Person successfully removed.\n");
                     } else {
                         printf("Person is not in the list. Operation canceled.\n");
