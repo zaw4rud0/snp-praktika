@@ -17,7 +17,8 @@
 #include <time.h>
 #include <assert.h>
 #include <CUnit/Basic.h>
-#include "test_utils.h"
+#include "../../../../testlib/include/test_utils.h"
+#include "../src/list.h"
 
 #ifndef TARGET // must be given by the make file --> see test target
 #error missing TARGET define
@@ -53,54 +54,127 @@ static int teardown(void)
 // tests
 static void test_person_compare(void)
 {
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
+    person_t person1 = {"Able", "Alice", 20};
+    person_t person2 = {"Bach", "Bob", 40};
 
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+    // act
+    int test_one = person_compare(&person1, &person2);
+    int test_two = person_compare(&person2, &person1);
+    int test_three = person_compare(&person1,&person1);
+
+    // assert
+    CU_ASSERT(test_one < 0);
+    CU_ASSERT(test_two > 0);
+    CU_ASSERT(test_three == 0);
 }
 
 static void test_list_insert(void)
 {
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
+    node_t *root = list_init();
 
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+    person_t person_test_one = {"Able", "Alice", 20};
+    person_t person_test_two = {"Bach", "Bob", 40};
+    person_t person_test_three = {"Roger", "Gold", 60};
+    person_t person_test_four = {"Sokolovskiy", "Gleb", 28};
+    person_t person_test_five = {"Sokolovskiy", "Gleb", 25};
+
+    // act
+    list_insert(&root, person_test_one);
+    list_insert(&root, person_test_two);
+    list_insert(&root, person_test_three);
+    list_insert(&root, person_test_four);
+    list_insert(&root, person_test_five);
+
+    // assert
+    node_t *current = root->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Able");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Alice");
+    CU_ASSERT_EQUAL(current->content.age, 20);
+
+    current = current->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Bach");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Bob");
+    CU_ASSERT_EQUAL(current->content.age, 40);
+
+    current = current->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Roger");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Gold");
+    CU_ASSERT_EQUAL(current->content.age, 60);
+
+    current = current->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Sokolovskiy");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Gleb");
+    CU_ASSERT_EQUAL(current->content.age, 25);
+
+    current = current->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Sokolovskiy");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Gleb");
+    CU_ASSERT_EQUAL(current->content.age, 28);
 }
 
 static void test_list_remove(void)
 {
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
+    // arrange
+    node_t *root = list_init();
 
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+    person_t person_test_one = {"Able", "Alice", 20};
+    person_t person_test_two = {"Bach", "Bob", 40};
+    person_t person_test_three = {"Roger", "Gold", 60};
+    person_t person_test_four = {"Sokolovskiy", "Gleb", 28};
+
+    list_insert(&root, person_test_one);
+    list_insert(&root, person_test_two);
+    list_insert(&root, person_test_three);
+    list_insert(&root, person_test_four);
+
+    // act
+    list_remove(&root, person_test_two);
+
+    // assert
+    node_t *current = root->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Able");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Alice");
+    CU_ASSERT_EQUAL(current->content.age, 20);
+
+    current = current->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Roger");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Gold");
+    CU_ASSERT_EQUAL(current->content.age, 60);
+
+    current = current->next;
+    CU_ASSERT_PTR_NOT_NULL(current);
+    CU_ASSERT_STRING_EQUAL(current->content.name, "Sokolovskiy");
+    CU_ASSERT_STRING_EQUAL(current->content.first_name, "Gleb");
+    CU_ASSERT_EQUAL(current->content.age, 28);
 }
 
 static void test_list_clear(void)
 {
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
+    // arrange
+    node_t *root = list_init();
 
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+    person_t person_test_one = {"Able", "Alice", 20};
+    person_t person_test_two = {"Bach", "Bob", 40};
+    person_t person_test_three = {"Roger", "Gold", 60};
+    person_t person_test_four = {"Sokolovskiy", "Gleb", 28};
+
+    list_insert(&root, person_test_one);
+    list_insert(&root,person_test_two);
+    list_insert(&root, person_test_three);
+    list_insert(&root, person_test_four);
+
+    // act
+    list_clear(&root);
+
+    // assert
+    CU_ASSERT_EQUAL(root->next, root);
 }
 
 /**
