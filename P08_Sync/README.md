@@ -118,8 +118,16 @@ Im Folgenden soll eine erzwungene Verarbeitungsreihenfolge implementiert werden:
 Für die Lösung dieses Problems benötigen wir Semaphore, die, im Gegensatz zu Mutexes, auch in verschiedenen Prozessen gesetzt bzw. zurückgesetzt werden dürfen. Den Kaffee-Automaten und die Kunden implementieren wir mit Prozessen. sie finden die entsprechenden Prozesse im Verzeichnis **basicSequence**.
 
 #### Aufgaben 
-1. Beschreiben sie den Kaffee-Automaten mit Hilfe der 6 Schritte aus Abschnitt 3 auf Papier, dokumentieren sie dabei alle Schritte schriftlich.
-2. 	Implementieren sie nun den Kaffee-Automaten. Ergänzen sie dazu den *coffeeTeller* und den *customer* Prozess so mit vier Semaphoren, dass die vorgegebenen Ablaufbedingungen eingehalten werden. Mit welchen Werten müssen die Semaphore initialisiert werden?
+1. Beschreiben Sie den Kaffee-Automaten mithilfe der 6 Schritte aus Abschnitt 3 auf Papier, dokumentieren Sie dabei alle Schritte schriftlich.
+
+* Warten auf Münzeinwurf
+* Münze empfangen
+* Kaffee ausgeben
+* Bereitschaft melden
+* Wiederholung
+* Ende def Ausführung
+
+2. 	Implementieren Sie nun den Kaffee-Automaten. Ergänzen Sie dazu den *coffeeTeller* und den *customer* Prozess so mit vier Semaphoren, dass die vorgegebenen Ablaufbedingungen eingehalten werden. Mit welchen Werten müssen die Semaphore initialisiert werden?
 Wir haben für sie vier Semaphore vorbereitet: Achtung, sie sind aber noch auskommentiert (siehe commonDefs.h und startApp.c. Die benötigten Semaphor-Funktionen aus der POSIX Bibliothek sind:
 ```c
 sem_wait(&semaphor);
@@ -128,14 +136,14 @@ und
 ```c
 sem_post(&semaphor);
 ```
-Analysieren sie die Ausgabe der Prozesse (mehrmals starten). Was fällt auf?
+Analysieren Sie die Ausgabe der Prozesse (mehrmals starten). Was fällt auf?
 
-3. 	Gibt Ihr Programm den Output in der korrekten Reihenfolge aus? Falls nicht, wie könnte das gelöst werden?
+3. Gibt Ihr Programm den Output in der korrekten Reihenfolge aus? Falls nicht, wie könnte das gelöst werden?
 
 ### 4.3	Aufgabe: Erweiterte Reihenfolge 
-Die Preise steigen dauernd ... auch der Kaffee wird immer teurer, er kostet nun 3 Euro. Da der Automat nur 1 Euro Stücke annehmen kann, muss der Kunde 3 Münzen einwerfen. Erweitern sie die Prozesse aus Aufgabe 4.2 so, dass eine vordefinierte Anzahl Münzen eingegeben werden muss (die Anzahl Münzen ist in *commonDefs.h* als *NUM_COINS* definiert). Verwenden sie keine zusätzlichen Semaphore, sondern nutzen sie, dass wir Counting Semaphore verwenden. Die vordefinierten Prozesse finden sie im Verzeichnis *advancedSequence*.
+Die Preise steigen dauernd ... auch der Kaffee wird immer teurer, er kostet nun 3 Euro. Da der Automat nur 1-Euro-Stücke annehmen kann, muss der Kunde 3 Münzen einwerfen. Erweitern Sie die Prozesse aus Aufgabe 4.2 so, dass eine vordefinierte Anzahl Münzen eingegeben werden muss (die Anzahl Münzen ist in *commonDefs.h* als *NUM_COINS* definiert). Verwenden Sie keine zusätzlichen Semaphore, sondern nutzen sie, dass wir Counting Semaphore verwenden. Die vordefinierten Prozesse finden sie im Verzeichnis *advancedSequence*.
 #### Aufgabe 
-- Passen sie den coffeeTeller und den customer Prozess so an, dass der Kunde mehrere Münzen einwerfen muss, bis der Automat einen Kaffee ausgeben kann.
+- Passen Sie den coffeeTeller und den customer Prozess so an, dass der Kunde mehrere Münzen einwerfen muss, bis der Automat einen Kaffee ausgeben kann.
 
 **Hinweis:** POSIX Semaphore sind Counting Semaphore, können aber nicht auf vordefinierte Werte gesetzt werden (ausser bei der Initialisierung). Abhilfe schafft hier das mehrmalige Aufrufen von *sem_post()*, z.B. in einer for-Schleife.
 
@@ -145,7 +153,7 @@ Wir haben drei grundlegenden Typen von Synchronisationsproblemen kennen gelernt:
   - Beispiel: entweder liest der Kaffee-Automat die Daten oder ein Kunde verändert sie.
 - **Einfache Reihenfolge** ein Prozess wartet auf die Freigabe durch einen anderen Prozess.
   - Beispiel: der Kaffee-Automat wartet auf die Eingabe einer Münze.
-- **Erweiterte Reihenfolge** ein Prozess wartet auf mehrere Freigaben durch einen anderen Pro-zess.
+- **Erweiterte Reihenfolge** ein Prozess wartet auf mehrere Freigaben durch einen anderen Prozess.
   - Beispiel: der Kaffee-Automat wartet auf die Eingabe von drei Münzen.
 
 ___

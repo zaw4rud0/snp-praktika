@@ -27,20 +27,22 @@ int main(void) {
     sem_t    *coin, *coffee, *ready;
 
     // set up a semaphore
-    coin   = sem_open(COIN_SEMAPHOR,   0);
-    coffee = sem_open(COFFEE_SEMAPHOR, 0);
-    ready  = sem_open(READY_SEMAPHOR,  0);
+    coin   = sem_open(COIN_SEMAPHOR, O_CREAT, 0700, 0);
+    coffee = sem_open(COFFEE_SEMAPHOR, O_CREAT, 0700, 0);
+    ready  = sem_open(READY_SEMAPHOR, O_CREAT, 0700, 1);  // Initially ready
 
     // start teller machine
     printf("\nCoffee teller machine starting\n\n");
 
-    i = 0;
-    while (i < ITERS) {
-        printf("teller (%d): waiting for coin\n", i);
-        printf("       (%d): got coin\n", i);  
-        printf("       (%d): dispense coffee\n", i); 
-        i++;
+    for (i = 0; i < ITERS; i++) {
+        sem_wait(coin);  // Wait for coin
+        printf("teller (%d): got coin, dispense coffee\n", i);
+        sem_post(coffee);  // Coffee ready
     }
+    sem_close(coin);
+    sem_close(coffee);
+    sem_close(ready);
+    return 0;
 }
 
 //******************************************************************************

@@ -25,48 +25,43 @@ int main(void) {
 
     int      j;
     char     string[8];
-    sem_t    *myTurn, *coin, *coffee, *ready;
-    pid_t    tellerPID;
+    sem_t    *coin, *coffee, *ready;
 
-    sem_unlink(MYTURN_SEMAPHOR);        // delete seamphor if it still exists
-    sem_unlink(COIN_SEMAPHOR);          // delete seamphor if it still exists
-    sem_unlink(COFFEE_SEMAPHOR);        // delete seamphor if it still exists
-    sem_unlink(READY_SEMAPHOR);         // delete seamphor if it still exists
+    sem_unlink(COIN_SEMAPHOR);
+    sem_unlink(COFFEE_SEMAPHOR);
+    sem_unlink(READY_SEMAPHOR);
 
-    // set up a semaphore (? -> initial value of semaphor)
-    // checkSem() -> macro defined in commonDefs.h
+    coin   = sem_open(COIN_SEMAPHOR,   O_CREAT, 0700, 0);
+    coffee = sem_open(COFFEE_SEMAPHOR, O_CREAT, 0700, 0);
+    ready  = sem_open(READY_SEMAPHOR,  O_CREAT, 0700, 1);
 
-    /*
-    myTurn = sem_open(MYTURN_SEMAPHOR, O_CREAT, 0700, ?); checkSem(myTurn);
-    coin   = sem_open(COIN_SEMAPHOR,   O_CREAT, 0700, ?); checkSem(coin);
-    coffee = sem_open(COFFEE_SEMAPHOR, O_CREAT, 0700, ?); checkSem(coffee);
-    ready  = sem_open(READY_SEMAPHOR,  O_CREAT, 0700, ?); checkSem(ready);
-    */
-
-    // now that the resources are set up, the supervisor can be started
     for (j = 1; j <= CUSTOMERS; j++) {
         if (fork() == 0) {
             sprintf(string, "%d", j);
             execl("./customer.e", "customer.e", string, NULL);
-            printf("*** could not start customer.e ***\n");
+            perror("execl failed");
+            exit(1);
         }
     }
-    
-    if ((tellerPID = fork()) == 0) {
-            execl("./coffeeTeller.e", "coffeeTeller.e", "0", NULL);
-            printf("*** could not start coffeTeller ***\n");
-    }
-    
-    waitpid(tellerPID, NULL, 0);
-    system("killall coffeeTeller.e");
-    system("killall customer.e");       // kill all customers
 
-    // clean up resources
-    sem_unlink(MYTURN_SEMAPHOR);
+    if (fork() == 0) {
+        execl("./coffeeTeller.e", "coffeeTeller.e", NULL);
+        perror("execl failed");
+        exit(1);
+    }
+
+    for (j = 0; j <= CUSTOMERS + 1; j++) {
+        wait(NULL);
+    }
+
+    sem_close(coin);
+    sem_close(coffee);
+    sem_close(ready);
     sem_unlink(COIN_SEMAPHOR);
     sem_unlink(COFFEE_SEMAPHOR);
     sem_unlink(READY_SEMAPHOR);
-    printf("\n");
+
+    return 0;
 }
 
 //******************************************************************************
