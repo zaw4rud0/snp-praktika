@@ -79,12 +79,14 @@ ___
 ### 4.1 Aufgabe: Mutual Exclusion 
 Greifen mehrere Threads (oder Prozesse) auf gemeinsame Daten zu, können sogenannte Race Conditions entstehen. Das Resultat ist in diesem Fall abhängig von der Reihenfolge, in der die Threads (Prozesse) ausgeführt werden.
 
-Im vorliegenden Beispiel wirft der Kunde eine 1 Euro Münze ein und drückt anschliessend auf eine von zwei Kaffeewahltasten. Dabei wird die Anzahl Münzen (*coinCount*) und die gewählte Kaffeesorte (*selCount1*, *selCount2*) inkrementiert. Diese Variablen sind in der Datenstruktur *cData* abgelegt, auf die gemeinsam Kaffee-Automat und Kunden zugreifen können. Der Auto-mat überprüft, ob die Anzahl Münzen und die Anzahl der Kaffeewahlen gleich gross sind, falls nicht, wird eine Fehlermeldung ausgegeben und alle Zähler auf *Null* gesetzt.
+Im vorliegenden Beispiel wirft der Kunde eine 1-Euro-Münze ein und drückt anschliessend auf eine von zwei Kaffeewahltasten. Dabei wird die Anzahl Münzen (*coinCount*) und die gewählte Kaffeesorte (*selCount1*, *selCount2*) inkrementiert. Diese Variablen sind in der Datenstruktur *cData* abgelegt, auf die gemeinsam Kaffee-Automat und Kunden zugreifen können. Der Auto-mat überprüft, ob die Anzahl Münzen und die Anzahl der Kaffeewahlen gleich gross sind, falls nicht, wird eine Fehlermeldung ausgegeben und alle Zähler auf *Null* gesetzt.
 
 #### Aufgaben 
 
-1.	Übersetzen Sie die Programme im Verzeichnis *mutex* mit *make* und starten sie den Kaffee-Automaten mit **startApp.e** mehrmals hintereinander.
-  Analysieren Sie die Datenwerte in den Fehlermeldungen, beschreiben sie was die Gründe dafür sind bzw. sein können.
+1.	Übersetzen Sie die Programme im Verzeichnis *mutex* mit *make* und starten Sie den Kaffee-Automaten mit **startApp.e** mehrmals hintereinander.
+  Analysieren Sie die Datenwerte in den Fehlermeldungen, beschreiben Sie was die Gründe dafür sind bzw. sein können.
+
+→ Data race conditions und Inkonsistenzen
 
 2. 	Schützen Sie nun den Zugriff auf die gemeinsamen Daten mit einem Mutex so, dass alle Threads eine konsistente Sicht der Daten haben.
 Wir haben für sie einen Mutex vorbereitet: die Datenstruktur *cData* enthält die Mutex-Variable *mutex*, die in **startApp.c** initialisiert wird. Die Funktionen für das Schliessen und das Öffnen des Mutex (Locks) aus der *pthread* Bibliothek sind:
