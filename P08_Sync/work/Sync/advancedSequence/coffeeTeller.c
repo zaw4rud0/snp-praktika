@@ -34,13 +34,15 @@ int main(void) {
     // start teller machine
     printf("\nCoffee teller machine starting\n\n");
 
-    i = 0;
-    while (i < ITERS) {
-        printf("teller (%d): waiting for coin\n", i);
-        printf("       (%d): got coin\n", i);  
-        printf("       (%d): dispense coffee\n", i); 
-        i++;
+    for (i = 0; i < ITERS; i++) {
+        printf("teller (%d): waiting for coins\n", i);
+        for (int j = 0; j < NUM_COIN; j++) {
+            sem_wait(coin);  // Wait for each coin
+        }
+        printf("       (%d): got coins, dispense coffee\n", i);
+        sem_post(coffee);  // Signal that coffee is dispensed
     }
+    return 0;
 }
 
 //******************************************************************************

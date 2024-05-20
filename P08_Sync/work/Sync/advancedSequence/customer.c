@@ -30,7 +30,6 @@ int main(int argc, char *argv[]) {
         myID = 0;
 
     // set up a semaphore
-    myTurn = sem_open(MYTURN_SEMAPHOR, 0);
     coin   = sem_open(COIN_SEMAPHOR,   0);
     coffee = sem_open(COFFEE_SEMAPHOR, 0);
     ready  = sem_open(READY_SEMAPHOR,  0);
@@ -38,13 +37,16 @@ int main(int argc, char *argv[]) {
     // start customer
     printf("Customer starting (%d)\n", myID);
 
-    // now check the sum 
     for (i = 0; i < ITERS; i++) {
-        printf("\t\t\t\tcustomer(%d) put coin %d\n", myID, i); 
-        printf("\t\t\t\tcustomer(%d) waiting for coffee %d\n", myID, i);
+        for (int j = 0; j < NUM_COIN; j++) {
+            sem_post(coin);  // Insert each coin
+        }
+        printf("\t\t\t\tcustomer(%d) put coins %d\n", myID, i);
+        sem_wait(coffee); // Wait for coffee
         printf("\t\t\t\tcustomer(%d) got coffee %d\n", myID, i);
         drinkingCoffee(myID);
     }
+    return 0;
 }
 
 //******************************************************************************
