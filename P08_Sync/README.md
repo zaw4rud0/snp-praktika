@@ -17,7 +17,7 @@ Im zweiten Teil werden sie auf Basis dieser Grundlagen ein komplexeres Synchroni
 ___
 
 ### 1.1 Nachweis 
-Dieses Praktikum ist eine leicht abgewandelte Variante des Sync Praktikum des Moduls BSY, angepasst an die Verhältnisse des SNP Moduls. Die Beispiele und Beschreibungen wurden, wo möglich, eins-zu-ein übernommen.
+Dieses Praktikum ist eine leicht abgewandelte Variante des Sync-Praktikums des Moduls BSY, angepasst an die Verhältnisse des SNP Moduls. Die Beispiele und Beschreibungen wurden, wo möglich, eins-zu-ein übernommen.
 
 Als Autor des BSY Praktikums ist genannt: M. Thaler.
 
@@ -26,7 +26,7 @@ ___
 ##  2. Lernziele 
 In diesem Praktikum werden sie Synchronisationsprobleme lösen
 -	Sie wissen wie man systematisch Synchronisationsprobleme analysiert
--	Sie wissen wann ein potentieller Deadlock entstehen kann
+-	Sie wissen, wann ein potenzieller Deadlock entstehen kann
 -	Sie können Mutex mit Threads anwenden
 -	Sie können Semaphoren mit Prozessen anwenden
 
@@ -40,16 +40,16 @@ ___
 ### 3.1	Wie löst man Synchronisationsprobleme? 
 Gehen sie beim Lösen von Synchronisationsproblemen in folgenden Schritten vor:
 
-- **Schritt 1:  Prozesse (Threads) der Problemstellung identifizieren.**  
+- **Schritt 1: Prozesse (Threads) der Problemstellung identifizieren.**  
   Prozesse sind die Aktivitäten, die gleichzeitig ausgeführt werden. In diesem Sinne sind sie eigenständige Ausführungs-Einheiten, deren zeitliches Verhalten synchronisiert werden muss.
-- **Schritt 2:  Ausführungsschritte der einzelnen Prozesse (Threads) ermitteln.**  
-  Erstellen sie eine Liste mit einer Spalte für jeden Prozess. Notieren sie für jeden Prozess stichwortartig die wesentlichen Aktionen in der gewünschten zeitlichen Reihenfolge. Tragen sie noch keine Synchronisationsoperationen ein, sondern Texte wie warten auf Geld, etc. Übertragen sie anschliessend die Liste in einen Ablaufgraphen (Siehe Beispiel in Abbildung 1).
+- **Schritt 2: Ausführungsschritte der einzelnen Prozesse (Threads) ermitteln.**  
+  Erstellen Sie eine Liste mit einer Spalte für jeden Prozess. Notieren Sie für jeden Prozess stichwortartig die wesentlichen Aktionen in der gewünschten zeitlichen Reihenfolge. Tragen sie noch keine Synchronisationsoperationen ein, sondern Texte wie warten auf Geld, etc. Übertragen sie anschliessend die Liste in einen Ablaufgraphen (Siehe Beispiel in Abbildung 1).
 - **Schritt 3: Synchronisationsbedingungen ermitteln.**  
   Eine Synchronisationsbedingung ist eine zeitliche Beziehung (Abhängigkeit) zwischen Aktionen verschiedener Prozesse, die für das korrekte Arbeiten erforderlich ist. Zeichnen sie diese Beziehungen mit Pfeilen in den Ablaufgraphen aus Schritt 2 ein (Siehe Abbildung 1).
 - **Schritt 4: Benötigte Semaphore definieren.**  
-  Für jede Synchronisationsbedingung wird ein eigener Semaphor benötigt. Notieren sie für jeden Semaphor einen Namen und den Wert, mit dem er initialisiert werden muss.
+  Für jede Synchronisationsbedingung wird ein eigener Semaphor benötigt. Notieren Sie für jeden Semaphor einen Namen und den Wert, mit dem er initialisiert werden muss.
 - **Schritt 5: Prozesse mit Semaphore Operationen ergänzen.**  
-  Erweitern sie nun alle Prozesse aus Schritt 2 mit den notwendigen Semaphore Operati-onen (Siehe Pseudocode in Abbildung 1).
+  Erweitern Sie nun alle Prozesse aus Schritt 2 mit den notwendigen Semaphore Operationen (Siehe Pseudocode in Abbildung 1).
 - **Schritt 6: Implementation.**  
   Implementieren und testen sie das vollständige Programm.
 
@@ -61,16 +61,16 @@ coin   = sem_open(...,0);
 coffee = sem_open(...,0);
 ```
 
-Ablaufgraph und Pseudocode für 2 Prozesse und zwei Semaphore  
+Ablauf-Graph und Pseudocode für 2 Prozesse und zwei Semaphore  
 ![](./sequence_graph.png)
 
 
 
 
 ##  4. Der Kaffee-Automat 
-Als Beispiel verwenden wir einen Automaten, der Kaffee verkauft. Der Kunde muss zum Kauf eines Kaffees zuerst eine bzw. mehrere Münzen einwerfen und anschliessend den gewünsch-ten Kaffee wählen. Der Automat gibt dann das entsprechende Getränk aus.
+Als Beispiel verwenden wir einen Automaten, der Kaffee verkauft. Der Kunde muss zum Kauf eines Kaffees zuerst eine bzw. mehrere Münzen einwerfen und anschliessend den gewünschten Kaffee wählen. Der Automat gibt dann das entsprechende Getränk aus.
 
-Im ersten Beispiel werden der Automat und die Kunden mit Threads modelliert und tauschen Daten über gemeinsame Speichervariablen aus. Im zweiten und dritten Beispiel werden der Automat und die Kunden mit Prozessen modelliert, dabei wird der Ablauf mit Hilfe von Sema-phoren gesteuert bzw. erzwungen.
+Im ersten Beispiel werden der Automat und die Kunden mit Threads modelliert und tauschen Daten über gemeinsame Speichervariablen aus. Im zweiten und dritten Beispiel werden der Automat und die Kunden mit Prozessen modelliert, dabei wird der Ablauf mithilfe von Semaphoren gesteuert bzw. erzwungen.
 
 **Hinweis:** die Programme zu den folgenden Aufgaben können alle mit **startApp.e** gestartet werden. Dieses Programm startet und stoppt Threads und Prozesse, alloziert und dealloziert die Ressourcen (Mutexes, Semaphore).
 
@@ -83,10 +83,10 @@ Im vorliegenden Beispiel wirft der Kunde eine 1 Euro Münze ein und drückt ansc
 
 #### Aufgaben 
 
-1.	Übersetzen sie die Programme im Verzeichnis *mutex* mit *make* und starten sie den Kaffee-Automaten mit **startApp.e** mehrmals hintereinander.
-  Analysieren sie die Datenwerte in den Fehlermeldungen, beschreiben sie was die Gründe dafür sind bzw. sein können.
+1.	Übersetzen Sie die Programme im Verzeichnis *mutex* mit *make* und starten sie den Kaffee-Automaten mit **startApp.e** mehrmals hintereinander.
+  Analysieren Sie die Datenwerte in den Fehlermeldungen, beschreiben sie was die Gründe dafür sind bzw. sein können.
 
-2. 	Schützen sie nun den Zugriff auf die gemeinsamen Daten mit einem Mutex so, dass alle Threads eine konsistente Sicht der Daten haben.
+2. 	Schützen Sie nun den Zugriff auf die gemeinsamen Daten mit einem Mutex so, dass alle Threads eine konsistente Sicht der Daten haben.
 Wir haben für sie einen Mutex vorbereitet: die Datenstruktur *cData* enthält die Mutex-Variable *mutex*, die in **startApp.c** initialisiert wird. Die Funktionen für das Schliessen und das Öffnen des Mutex (Locks) aus der *pthread* Bibliothek sind:
 ```c
 pthread mutex lock(&(cD->lock));
@@ -95,20 +95,25 @@ pthread mutex lock(&(cD->lock));
 ```c
 pthread mutex unlock(&(cD->lock));
 ```
-Überprüfen sie, ob der Kaffee-Automat nun keine Fehlermeldungen mehr ausgibt. Erhö-hen sie dazu auch die Anzahl Kunden *CUSTOMERS* in **commonDefs.h**, z.B. auf 10.
+Überprüfen Sie, ob der Kaffee-Automat nun keine Fehlermeldungen mehr ausgibt. Erhöhen sie dazu auch die Anzahl Kunden *CUSTOMERS* in **commonDefs.h**, z.B. auf 10.
 
-3.	Im Thread des Kaffee-Automaten wird an verschiedenen Orten mehrmals auf die gemeinsamen Daten in *cD* zugegriffen. Wenn sie die gemeinsamen Daten in lokale Variablen kopieren und dann nur noch auf diese lokalen Variablen zugreifen würden, könn-ten sie dann auf die Synchronisation mit dem Mutex verzichten?
+3. Im Thread des Kaffee-Automaten wird an verschiedenen Orten mehrmals auf die gemeinsamen Daten in *cD* zugegriffen. Wenn Sie die gemeinsamen Daten in lokale Variablen kopieren und dann nur noch auf diese lokalen Variablen zugreifen würden, könnten Sie dann auf die Synchronisation mit dem Mutex verzichten?
+
+→ Nein, es gibt andere Stellen, wo durch die Zugriffe durch andere Threads zu data race conditions kommen könnte.
 
 4. Wie oft kann ein einzelner Kunde einen Kaffee beziehen, bis der nächste Kunde an die Reihe kommt? Hier reicht eine qualitative Aussage.
 
+→ Ein Kunde kann alle seine Kaffee-Bezüge (ITERATIONS) vollständig tätigen, bevor es zu einem Wechsel kommt.
+
 ### 4.2 Aufgabe: Einfache Reihenfolge 
-Wie sie im ersten Beispiel festgestellt haben, verhindert ein Mutex zwar, dass Race Conditions auftreten, die Verarbeitungsreihenfolge der Threads lässt sich jedoch nicht beeinflussen und ist zufällig.
+Wie Sie im ersten Beispiel festgestellt haben, verhindert ein Mutex zwar, dass Race Conditions auftreten, die Verarbeitungsreihenfolge der Threads lässt sich jedoch nicht beeinflussen und ist zufällig.
 Im Folgenden soll eine erzwungene Verarbeitungsreihenfolge implementiert werden:
-- Ein Kunde benutzt den Automat für einen Kaffeekauf exklusiv, d.h. alle Schritte des Kunden werden innerhalb eines Mutexes ausgeführt. Ist ein Kunde an der Reihe, wartet er bis der Automat bereit ist, wirft eine Münze ein, wartet auf den Kaffee und gibt anschlies-send den Automaten für den nächsten Kunden frei.
+
+- Ein Kunde benutzt den Automaten für einen Kaffeekauf exklusiv, d.h. alle Schritte des Kunden werden innerhalb eines Mutexes ausgeführt. Ist ein Kunde an der Reihe, wartet er bis der Automat bereit ist, wirft eine Münze ein, wartet auf den Kaffee und gibt anschliessend den Automaten für den nächsten Kunden frei.
 
 - Der Automat meldet zuerst in einer Endlos-Schleife, dass er für die Geld-Eingabe bereit ist, wartet dann auf die Eingabe einer Münze, gibt den Kaffee aus und meldet anschliessend wieder, wenn er bereit ist, etc.
 
-Für die Lösung dieses Problems benötigen wir Semaphore, die, im Gegensatz zu Mutexes, auch in verschiedenen Prozessen gesetzt bzw. zurückgesetzt werden dürfen. Den Kaffee-Automat und die Kunden implementieren wir mit Prozessen. sie finden die entsprechenden Prozesse im Verzeichnis **basicSequence**.
+Für die Lösung dieses Problems benötigen wir Semaphore, die, im Gegensatz zu Mutexes, auch in verschiedenen Prozessen gesetzt bzw. zurückgesetzt werden dürfen. Den Kaffee-Automaten und die Kunden implementieren wir mit Prozessen. sie finden die entsprechenden Prozesse im Verzeichnis **basicSequence**.
 
 #### Aufgaben 
 1. Beschreiben sie den Kaffee-Automaten mit Hilfe der 6 Schritte aus Abschnitt 3 auf Papier, dokumentieren sie dabei alle Schritte schriftlich.

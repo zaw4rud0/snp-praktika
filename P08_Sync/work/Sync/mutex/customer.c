@@ -30,12 +30,14 @@ void *customer(void* data) {
 
     // put coin and select coffee
     for (i = 0; i < ITERATIONS; i++) {
+        pthread_mutex_lock(&(cD->lock)); // Lock the mutex
         ranNum = rand_float(&randnum);
         cD->coinCount      += 1;
         if (ranNum < 0.5)
             cD->selCount1 += 1;
         else
             cD->selCount2 += 1;
+        pthread_mutex_unlock(&(cD->lock)); // Unlock the mutex
     }
     
     pthread_exit(0);  

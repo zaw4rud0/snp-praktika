@@ -96,8 +96,7 @@ ___
 2. Starten Sie `ProcA2.e` und vergleichen Sie die Ausgabe mit der Ausgabe unter Aufgabe 1. Diskutieren und erklären Sie
    was gleich ist und was anders.
    ```
-      
-      
+
    ```
 3. Benennen Sie `ChildProcA2.e` auf `ChildProcA2.f` um (Shell Befehl `mv`) und überlegen Sie, was das Programm nun
    ausgibt. Starten Sie `ProcA2.e` und vergleichen Sie Ihre Überlegungen mit der Programmausgabe.
