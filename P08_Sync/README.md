@@ -162,22 +162,22 @@ ___
 Die International Bank of Transfer (IBT) besitzt in 128 Ländern Filialen und stellt für 2048 spezielle Handels-Kunden in jeder Filiale ein Konto zur Verfügung. Gelder dieser Kunden werden dauernd zwischen den Filialen hin und her transferiert, dazu beschäftigt die Bank sogenannte Pusher. Pusher heben Geldbeträge von Konten in einer Filiale ab und buchen sie auf den entsprechenden Konten in irgendeiner (auch in der eigenen) Filiale wieder ein. Die Beträge liegen zwischen 1000 und 100’000 Dollar und werden zufällig ausgewählt, die Wahl der beiden Filialen ist ebenfalls zufällig.
 
 ### 5.1	Implementation 
-Im Folgenden arbeiten wir mit einer *pthread*-basierten Implementation der IBT, die Pusher werden dabei mit Threads implementiert. Die Filialen der Bank sind als Array von Strukturen implementiert, wobei pro Filiale ein Lock (*branchLock*) und ein Array von Konten (Accounts) definiert ist. Die Konten sind wiederum Strukturen mit dem Kontostand (*account*) und dem Lock (*acntLock*), siehe dazu auch den Source Code. Die Zugriffe auf die Gelder sind imple-mentiert (Funktionen *withdraw()*, *deposit()*, *transfer()*), aber nicht synchronisiert.
+Im Folgenden arbeiten wir mit einer *pthread*-basierten Implementation der IBT, die Pusher werden dabei mit Threads implementiert. Die Filialen der Bank sind als Array von Strukturen implementiert, wobei pro Filiale ein Lock (*branchLock*) und ein Array von Konten (Accounts) definiert ist. Die Konten sind wiederum Strukturen mit dem Kontostand (*account*) und dem Lock (*acntLock*), siehe dazu auch den Source Code. Die Zugriffe auf die Gelder sind implementiert (Funktionen *withdraw()*, *deposit()*, *transfer()*), aber nicht synchronisiert.
 **Hinweis:** es ist von Vorteil hier mit mehreren CPUs zu arbeiten. Falls sie eine VM verwenden, setzen sie die Anzahl CPUs auf das Maximum.
 
 
 ### 5.2	Aufgabe: Konto Synchronisation 
-1. Wechseln sie ins Verzeichnis **banking/a1**, übersetzen sie das Programm und starten sie es mit dem Skript `./startApp`. Analysieren und erklären sie die Resultate. Notie-ren sie sich zudem die Laufzeiten für 1, 2 und 4 Threads.
-2. Synchronisieren sie die Kontenzugriffe so, dass möglichst viele Zugriffe gleichzeitig ausgeführt werden können und die Zugriffe atomar sind. Sie dürfen nur eines der beiden Locks *branchLock* bzw. *acntLock* verwenden: welches wählen sie und wieso? Be-gründen sie ihre Antwort und testen sie ihre Lösung.
+1. Wechseln sie ins Verzeichnis **banking/a1**, übersetzen sie das Programm und starten sie es mit dem Skript `./startApp`. Analysieren und erklären sie die Resultate. Notieren Sie sich zudem die Laufzeiten für 1, 2 und 4 Threads.
+2. Synchronisieren sie die Kontenzugriffe so, dass möglichst viele Zugriffe gleichzeitig ausgeführt werden können und die Zugriffe atomar sind. Sie dürfen nur eines der beiden Locks *branchLock* bzw. *acntLock* verwenden: welches wählen sie und wieso? Begründen Sie ihre Antwort und testen Sie Ihre Lösung.
 
 ### 5.3	Aufgabe: Filialen Zugriff in Critical Section 
-Ihr Chef meint, dass es wohl aus Sicherheitsgründen besser wäre, sowohl die Filialen und die jeweiligen Kontenzugriffen zu ”locken”.
-   1.	Wechseln sie ins Verzeichnis banking/a2 und kopieren sie banking.c aus Aufgabe 5.2. Implementieren sie diese zusätzlichen Anforderungen. Analysieren sie die Resultate. Was stellen sie fest im Vergleich mit den Resultaten aus der Aufgabe 5.2? Was raten sie ihrem Chef?
-  2.	Ein Kollege meint, es wäre effizienter beim Abheben des Betrags zuerst das Konto zu locken und dann die Filiale, hingegen beim Einbuchen zuerst die die Filiale und dann das Konto. Was für eine Antwort geben sie ihrem Kollegen?**Hinweis:** falls sie nicht sicher sind: probieren sie es aus.
+Ihr Chef meint, dass es wohl aus Sicherheitsgründen besser wäre, sowohl die Filialen und die jeweiligen Kontenzugriffe zu ”locken”.
+   1.	Wechseln Sie ins Verzeichnis banking/a2 und kopieren Sie banking.c aus Aufgabe 5.2. Implementieren Sie diese zusätzlichen Anforderungen. Analysieren Sie die Resultate. Was stellen sie fest im Vergleich mit den Resultaten aus der Aufgabe 5.2? Was raten sie ihrem Chef?
+  2.	Ein Kollege meint, es wäre effizienter beim Abheben des Betrags zuerst das Konto zu locken und dann die Filiale, hingegen beim Einbuchen zuerst die Filiale und dann das Konto. Was für eine Antwort geben sie ihrem Kollegen? **Hinweis:** falls sie nicht sicher sind: probieren sie es aus.
 
 ### 5.4	Aufgabe: Refactoring der Synchronisation 
 Das International Banking Committe (IBC) erlässt neue Richtlinien, die unter anderem fordern, dass die Gesamtbilanz einer Bank über sämtliche Filialen zu jeder Zeit konsistent sein muss.
-1. 	Erklären sie wieso die Implementationen aus Aufgabe 5.2 und 5.3 diese Anforderungen nicht erfüllen.
+1. 	Erklären Sie wieso die Implementationen aus Aufgabe 5.2 und 5.3 diese Anforderungen nicht erfüllen.
 2. 	Ihr Entwicklungsteam kommt zum Schluss, dass den Pushern neu nur noch eine Funktion *transfer()* für die Überweisung von Beträgen zwischen den Filialen und Konten zur Verfügung gestellt werden darf.
 Welche Locks bzw. welches Lock muss verwendet werden, damit die Forderung des IBC erfüllt werden kann? Wechseln sie ins Verzeichnis *banking/a3* und ergänzen sie die Funktion *transfer()* in banking.c um die entsprechenden Lock-Funktionen.
 Wichtiger
